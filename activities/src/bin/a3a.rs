@@ -10,4 +10,12 @@
 // * Use an if..else block to determine which message to display
 // * Use the println macro to display messages to the terminal
 
-fn main() {}
+fn main() {
+    let greet = true;
+
+    if greet {
+        println!("hello");
+    } else {
+        println!("goodbye");    
+    }
+}
