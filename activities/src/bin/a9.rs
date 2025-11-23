@@ -9,4 +9,16 @@
 // * Destructure the return value into two variables
 // * Use an if..else if..else block to determine what to print
 
-fn main() {}
+fn cart_cord() -> (i32,i32){
+    (4,7)
+}
+fn main() {
+    let (x,y) = cart_cord();
+    if y < 5 {
+        println!("less than 5");
+    } else if y > 5{
+        println!("greater than 5");
+    }else {
+        println!("equal to 5");
+    }
+}
