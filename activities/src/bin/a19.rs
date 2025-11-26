@@ -12,5 +12,23 @@
 //
 // Notes:
 // * Use a HashMap for the furniture store stock
+use std::collections::HashMap;
 
-fn main() {}
+struct Content{
+    name: String,
+    stock: i32,
+}
+fn main() {
+    let mut inventory = HashMap::new();
+    let mut total_count = 0;
+    inventory.insert(1,Content{name: "Chairs".to_owned(),stock:5});
+    inventory.insert(2,Content{name: "Beds".to_owned(),stock:3});
+    inventory.insert(3,Content{name: "Tables".to_owned(),stock:2});
+    inventory.insert(4,Content{name: "Couches".to_owned(),stock:0});
+
+    for (_key,content) in inventory.iter(){
+        total_count += content.stock;
+        println!("Item: {}, Stock: {}",content.name,content.stock);
+    }
+    println!("Total Stock: {}", total_count);
+}
