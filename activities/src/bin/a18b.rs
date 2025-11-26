@@ -21,5 +21,47 @@
 //   may enter the building
 // * Print whether the employee may access the building
 //   * Must use a function that utilizes the question mark operator to do this
+enum Position{
+    Maintenance,
+    Marketing,
+    Manager,
+    Line,
+    Kitchen,
+    Assembly
+}
 
-fn main() {}
+struct Employee {
+    emp_type: Position,
+    employed: bool
+}
+fn has_access(employee: &Employee)-> Result<(),String>{
+    match employee.employed{
+        false => return Err("terminated".to_owned()),
+        _ => (),
+    }
+
+    match employee.emp_type {
+        Position::Maintenance => Ok(()),
+        Position::Marketing => Ok(()),
+        Position::Manager => Ok(()),
+        _ => Err("invalid position".to_owned())
+
+    }
+}
+
+fn print_aceess(employee: &Employee) -> Result<(),String>{
+    let attempt_access = has_access(employee)?;
+    println!("access ok");
+    Ok(())
+}
+fn main() {
+    let new_employee = Employee {
+        emp_type: Position::Manager,
+        employed: true,
+    };
+
+    match print_aceess(&new_employee){
+        Err(e) => println!("access denied: {:?}",e),
+        _ => (),
+    }
+}
