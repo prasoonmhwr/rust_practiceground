@@ -28,7 +28,40 @@ fn div(a: i32, b: i32) -> Option<i32> {
 
 /// Takes two strings and places them immediately one after another.
 fn concat(first: &str, second: &str) -> String {
-    format!("{} {}", first, second)
+    format!("{}{}", first, second)
 }
 
 fn main() {}
+
+#[cfg(test)]
+mod test{
+    use crate::*;
+
+    #[test]
+    fn check_clamp(){
+        let result = clamp(3,1,9);
+        let expected = 3;
+        assert_eq!(result,expected,"Clampped value");
+    }
+
+    #[test]
+    fn check_lower_clamp(){
+        let result = clamp(0,1,9);
+        let expected = 1;
+        assert_eq!(result,expected,"Clampped value");
+    }
+
+    #[test]
+    fn check_div(){
+        let result = div(10,2);
+        let expected = Some(5);
+        assert_eq!(result,expected,"Should be 5");
+    }
+
+    #[test]
+    fn check_concat(){
+        let result = concat("a","b");
+        let expected = String::from("ab");
+        assert_eq!(result,expected,"Should be ab");
+    }
+}
