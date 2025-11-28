@@ -23,7 +23,11 @@ fn clamp(n: i32, lower: i32, upper: i32) -> i32 {
 
 /// Divides a and b.
 fn div(a: i32, b: i32) -> Option<i32> {
-    Some(a / b)
+    if b==0{
+        return None
+    } else {
+        Some(a / b)
+    }
 }
 
 /// Takes two strings and places them immediately one after another.
@@ -57,7 +61,12 @@ mod test{
         let expected = Some(5);
         assert_eq!(result,expected,"Should be 5");
     }
-
+    #[test]
+    fn check_div_zero(){
+        let result = div(5,0);
+        let expected = None;
+        assert_eq!(result,expected,"cannot divide by zero");
+    }
     #[test]
     fn check_concat(){
         let result = concat("a","b");
